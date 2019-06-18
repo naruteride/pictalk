@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PicTalk</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <!-- 로컬 경로 -->
+    <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/stylesheets/main.css">
+    <script src="public/scripts/main.js"></script>
+
+    <!-- 서버 경로 -->
+    <!-- <link rel="stylesheet" href="/stylesheets/main.css"> -->
+    <!-- <script src="/scripts/main.js"></script> -->
+    <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+    <header id="app-bar" class="flex-vertical">
+        <button id="menu-button">
+            <img id="menu-icon" src="public/images/menu.svg">
+        </button>
+        <!-- <span id="app-name">PicTalk</span> -->
+        <!-- 검색 모음 -->
+        <form id="search-field">
+            <!-- 돋보기 아이콘 -->
+            <button id="magnify" class="search-field-item flex" type="submit"></button>
+            <div id="search-bar-cover">
+                <input id="search-bar" type="search" name="search">
+            </div>
+            <!-- 마이크 아이콘 -->
+            <button id="microphone" class="search-field-item flex"></button>
+        </form>
+    </header>
+    
+<!-- 이곳에 픽토그램들이 뜹니다 -->
+
+
+
+
+<!-- 
+    교통
+        자동차
+        배
+        비행기
+        버스
+        지하철
+    통신
+    숫자
+        돈
+        단위
+    상태
+        긍정
+        부정
+    장소(건물)
+        공공시설
+        종교
+        관광지
+        길
+    도구
+        천(가죽)
+        쇠붙이
+
+        
+ -->
+    <div id="pictograms">
+        <div id="question" class="waves-effect waves-light pictogram 물음표 ? 상태">
+            <div></div>
+        </div>
+        <div id="airport" class="waves-effect waves-light pictogram 공항 비행기 교통">
+            <div></div>
+        </div>
+        <div id="baggage" class="waves-effect waves-light pictogram 가방 캐리어 도구 천가죽">
+            <div></div>
+        </div>
+        <div id="wifi" class="waves-effect waves-light pictogram 와이파이 wifi wi-fi 통신">
+            <div></div>
+        </div>
+        <div id="phone" class="waves-effect waves-light pictogram 폰 전화 전화기 통화 통신">
+            <div></div>
+        </div>
+        <div id="toilet" class="waves-effect waves-light pictogram 화장실 장소 공공시설">
+            <div></div>
+        </div>
+        <div id="taxi" class="waves-effect waves-light pictogram 택시 교통 자동차">
+            <div></div>
+        </div>
+        <div id="hospital" class="waves-effect waves-light pictogram 병원 응급실 장소건물 공공시설">
+            <div></div>
+        </div>
+        <div id="bed" class="waves-effect waves-light pictogram 침대 숙소 호텔 모텔 취침 잠 장소건물">
+            <div></div>
+        </div>
+        <div id="money" class="waves-effect waves-light pictogram 돈 화폐 동전 지폐 숫자">
+            <div></div>
+        </div>
+        <div id="fork" class="waves-effect waves-light pictogram 포크 나이프 수저 음식 레스토랑 음식점 식기도구 도구 쇠붙이">
+            <div></div>
+        </div>
+        <div id="church" class="waves-effect waves-light pictogram 교회 성당 종교 십자가 장소건물">
+            <div></div>
+        </div>
+        <div id="bus" class="waves-effect waves-light pictogram 버스 환승 장소 교통">
+            <div></div>
+        </div>
+        <div id="bus2" class="waves-effect waves-light pictogram 버스 환승 장소 교통">
+            <div></div>
+        </div>
+        <div id="bus-stop2" class="waves-effect waves-light pictogram 버스 환승 버스정류소 버스정류장 장소 교통">
+            <div></div>
+        </div>
+        <div id="map-maker" class="waves-effect waves-light pictogram 위치 좌표 맵 마커 표시 장소 길">
+            <div></div>
+        </div>
+        <div id="" class="waves-effect waves-light pictogram">
+            <div></div>
+        </div>
+        <div id="" class="waves-effect waves-light pictogram">
+            <div></div>
+        </div>
+        <div id="" class="waves-effect waves-light pictogram">
+            <div></div>
+        </div>
+        <div id="" class="waves-effect waves-light pictogram">
+            <div></div>
+        </div>
+        <!-- <button id="TEST">TEST</button> -->
+    </div>
+
+
+
+    
+    <div id="bottom-navigation">
+        <div id="bottom-nav-buttons">    <!-- 아래 내비 버튼 모음 -->
+            <button id="history" class="bottom-nav-buttons-item flex">    <!-- 최근 선택 -->
+                <div><img id="history-icon" class="bottom-nav-icon" src="public/images/history.svg">최근 선택</div>
+            </button>
+            <button id="favorite" class="bottom-nav-buttons-item flex">    <!-- 자주 선택 -->
+                <div><img id="favorite-icon" class="bottom-nav-icon" src="public/images/favorite.svg">자주 선택</div>
+            </button>
+            <button id="gungsileong" class="bottom-nav-buttons-item flex">    <!-- 즐겨찾기 -->
+                <div><img id="gungsileong-icon" class="bottom-nav-icon" src="public/images/gungsileong.svg">즐겨찾기</div>
+            </button>
+        </div>
+    </div>
+
+
+    <button id="full-screen-button" class="flex">    <!-- 확대 아이콘 -->
+        <div id="full-screen-icon">
+
+        </div>
+    </button>
+
+
+
+
+    <div id="category-bg"></div>
+    <nav id="category">
+        <div id="main-category">
+            <ol>
+                <li id="traffic-button">교통</li>
+                <li id="place-button">장소</li>
+                <li>상태</li>
+            </ol>
+        </div>
+        <div id="traffic-category">
+            <ol>
+                <li id="bus-button">버스</li>
+                <li>비행기</li>
+                <li>자동차</li>
+            </ol>
+        </div>
+        <div id="place-category">
+            <ol>
+                <li>공공시설</li>
+                <li>종교</li>
+                <li>길</li>
+            </ol>
+        </div>
+    </nav>
+
+
+
+
+
+    <div id="one-img" class="flex display-none">
+        <div id="one-img-icon-box"></div>
+    </div>
+
+    <div id="two-img" class="flex flex-stack-up display-none">
+        <div id="two-img-icon-box1" class="two-img-icon-box"></div>
+        <div id="two-img-icon-box2" class="two-img-icon-box"></div>
+    </div>
+
+    <div id="three-img" class="flex flex-stack-up display-none">
+        <div id="three-img-icon-box1" class="three-img-icon-box"></div>
+        <div id="three-img-icon-box2" class="three-img-icon-box"></div>
+        <div id="three-img-icon-box3" class="three-img-icon-box"></div>
+    </div>
+
+    <div id="four-img" class="flex flex-stack-up display-none">
+        <div id="four-img-icon-box-cover" class="text-center">
+            <div id="four-img-icon-box1" class="four-img-icon-box"></div>
+            <div id="four-img-icon-box2" class="four-img-icon-box"></div>
+            <div id="four-img-icon-box3" class="four-img-icon-box"></div>
+            <div id="four-img-icon-box4" class="four-img-icon-box"></div>
+        </div>
+    </div>
+
+    <div id="five-img" class="flex flex-stack-up display-none">
+        <div id="five-img-icon-box-cover" class="text-center">
+            <div id="five-img-icon-box1" class="five-img-icon-box"></div>
+            <div id="five-img-icon-box2" class="five-img-icon-box"></div>
+            <div id="five-img-icon-box3" class="five-img-icon-box"></div>
+            <div id="five-img-icon-box4" class="five-img-icon-box"></div>
+            <div id="five-img-icon-box5" class="five-img-icon-box"></div>
+        </div>
+    </div>
+
+    <div id="six-img" class="flex flex-stack-up display-none">
+        <div id="six-img-icon-box-cover" class="text-center">
+            <div id="six-img-icon-box1" class="six-img-icon-box"></div>
+            <div id="six-img-icon-box2" class="six-img-icon-box"></div>
+            <div id="six-img-icon-box3" class="six-img-icon-box"></div>
+            <div id="six-img-icon-box4" class="six-img-icon-box"></div>
+            <div id="six-img-icon-box5" class="six-img-icon-box"></div>
+            <div id="six-img-icon-box6" class="six-img-icon-box"></div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

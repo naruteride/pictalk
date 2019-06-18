@@ -1,0 +1,571 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+:root {
+    --app-bar-height: 50px;
+    --bot-nav-height: 60px;
+}
+
+html, body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FAFAFA;
+}
+
+
+/* 화면 상단의 하늘색 바 */
+#app-bar {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: var(--app-bar-height);
+    /* background-color: #70B4F3; */
+    background-color: rgb(255, 80, 133);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.26);
+}
+
+/* 메뉴 버튼 */
+#menu-button {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 메뉴 아이콘 */
+#menu-icon {
+    /* width: 50%; */
+}
+
+
+/* 메뉴 창 */
+#category {
+    position: fixed;
+    top: 0;
+    left: -150px;
+    z-index: 300;
+    box-sizing: border-box;
+    width: 150px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+.category-on {
+    left: 0 !important;
+}
+/* 메뉴 창 배경 */
+#category-bg {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s;
+}
+.category-bg-on {
+    z-index: 200 !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+
+/* 메인 카테고리 */
+#main-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 400;
+    width: 100%;
+    height: 100%;;
+    background-color: rgba(255, 205, 68, 1);
+}
+.category-descendant-on {
+    left: 150px !important;
+}
+#traffic-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 310;
+    width: 100%;
+    height: 100%;;
+    background-color: rgba(205, 255, 68, 1);
+    transition: 0.2s;
+}
+#place-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 310;
+    width: 100%;
+    height: 100%;;
+    background-color: rgba(68, 205, 255, 1);
+    transition: 0.2s;
+}
+
+
+
+/* 앱 바의 타이틀 */
+#app-name {
+    font-size: 27px;
+    color: white;
+    font-family: Roboto;
+}
+
+
+
+
+
+
+
+#pictograms {
+    margin: calc(var(--app-bar-height) + 16px) 3px calc(var(--bot-nav-height) + 12px + 56px);
+    text-align: center;
+    font-size: 0;
+}
+.pictogram {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 5%;
+    box-sizing: border-box;
+    /* border: 0 solid #82FFA5; */
+    border-radius: 10%;
+    vertical-align: top;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #C1E1FF; */
+    background-color: #eeeeee;
+    /* box-shadow: 0 0 0 #389FFF; */
+    box-shadow: 0 0 0 rgb(255, 178, 201);
+    transition: 0.2s;
+}
+
+
+
+
+
+
+.selected {
+    box-sizing: border-box;
+    /* border: 7px solid #82FFA5; */
+    /* background-color: #C1E1FF; */
+    background-color: rgb(255, 178, 201);
+    border-radius: 0;
+    /* box-shadow: 0 0 10px #389FFF; */
+    box-shadow: 0 0 10px rgb(255, 40, 105);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 화면 하단의 검색과 버튼을 포함한 흰색 배경 */
+#bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    height: var(--bot-nav-height);
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 아래 내비 버튼들 */
+#bottom-nav-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: calc(var(--bot-nav-height) - 64px);
+    margin: 6px 0;
+}
+
+/* 아래 내비 버튼들의 아이탬 */
+.bottom-nav-buttons-item {
+    border: 0;
+    padding: 0;
+    text-align: center;
+    color: #757575;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+/* 최근, 자주, 궁시렁 선택 아이콘 - open */
+.bottom-nav-icon {
+    display: block;
+    width: 28px;
+    margin: auto;
+}
+/* 최근, 자주, 궁시렁 선택 아이콘 - end */
+
+
+/* 검색 필드 */
+#search-field {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    width: 150px;
+    height: 30px;
+    margin: auto 17px auto auto;
+    border-radius: 15px;
+    background-color: #E0E0E0;
+    transition: 0.2s;
+}
+#search-field:focus-within {
+    width: 100%;
+}
+
+/* 검색 필드 아이템 */
+.search-field-item {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    cursor: pointer;
+}
+
+/* 검색 필드 돋보기 아이콘과 마이크 아이콘 */
+#magnify {
+    background-image: url("../images/magnify.svg");
+}
+#microphone {
+    background-image: url("../images/microphone.svg");
+    background-size: 17px 24px;
+}
+
+
+
+/* 검색 바 커버 */
+#search-bar-cover {
+}
+
+/* 검색 바 */
+#search-bar {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+
+
+/* 전체화면 버튼 */
+#full-screen-button {
+    position: fixed;
+    right: 0;
+    z-index: 50;
+    bottom: calc(var(--bot-nav-height) + 12px);
+    left: 0;
+    width: 56px;
+    height: 56px;
+    margin: auto;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    /* background-color: #70B4F3; */
+    background-color: rgb(255, 80, 133);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+}
+
+/* 전체화면 아이콘 */
+#full-screen-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url("../images/full-screen-icon.svg")
+}
+
+
+/* flex 정렬 클래스 - open */
+.flex-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.flex-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-stack-up {
+    flex-flow: column;
+}
+/* flex 정렬 클래스 - end */
+
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* 몇번째인지 나타내는 class */
+.sequence {
+    width: 30%;
+    height: 20%;
+    margin-left: auto;
+    border-bottom-left-radius: 7px;
+    font-size: 10px;
+    
+    background-color: rgb(255, 205, 68);
+    box-shadow: -2px 2px 4px #757575;
+    transition: 0.2s
+}
+
+.display-none {
+    display: none;
+}
+
+
+/* -------- */
+    button:focus {
+        background-color: rgba(0, 0, 0, 0);
+    }
+/* -------- */
+
+
+
+
+
+#one-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#one-img-icon-box {
+    width: 70%;
+    padding-top: 35%;
+    padding-bottom: 35%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 20px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+
+#two-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.two-img-icon-box {
+    width: 60%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 20px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 8% 0;
+}
+
+
+
+#three-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.three-img-icon-box {
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 10px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 5% 0;
+}
+
+
+#four-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#four-img-icon-box-cover {
+    width: 100%;
+}
+.four-img-icon-box {
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 10px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+#five-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#five-img-icon-box-cover {
+    width: 100%;
+}
+.five-img-icon-box {
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 10px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+
+#six-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#six-img-icon-box-cover {
+    width: 100%;
+}
+.six-img-icon-box {
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    background-color: #C1E1FF;
+    box-shadow: 0 0 10px #389FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+
+
+/* 픽토그램들 */
+/* 수화기 */
+#question {
+    background-image: url("../images/pictograms/question.svg");
+}
+/* 공항 */
+#airport {
+    background-image: url("../images/pictograms/airport.svg");
+}
+/* 수하물 */
+#baggage {
+    background-image: url("../images/pictograms/baggage.svg");
+}
+/* 와이파이 */
+#wifi {
+    background-image: url("../images/pictograms/wifi.svg");
+}
+/* 전화기 */
+#phone {
+    background-image: url("../images/pictograms/phone.svg");
+}
+/* 화장실 */
+#toilet {
+    background-image: url("../images/pictograms/toilet.svg");
+}
+/* 택시 */
+#taxi {
+    background-image: url("../images/pictograms/taxi.svg");
+}
+/* 병원 */
+#hospital {
+    background-image: url("../images/pictograms/hospital.svg");
+}
+/* 침대 */
+#bed {
+    background-image: url("../images/pictograms/bed.svg");
+}
+/* 돈 */
+#money {
+    background-image: url("../images/pictograms/money.svg");
+}
+/* 포크와 나이프 */
+#fork {
+    background-image: url("../images/pictograms/fork.svg");
+}
+/* 교회 */
+#church {
+    background-image: url("../images/pictograms/church.svg");
+}
+/* 버스 */
+#bus {
+    background-image: url("../images/pictograms/bus.svg");
+}
+/* 버스2 */
+#bus2 {
+    background-image: url("../images/pictograms/bus2.svg");
+}
+/* 버스정류소2 */
+#bus-stop2 {
+    background-image: url("../images/pictograms/bus-stop2.svg");
+}
+/* 맵 마커 */
+#map-maker {
+    background-image: url("../images/pictograms/map-maker.svg");
+}
+
+
+/* ------------ */

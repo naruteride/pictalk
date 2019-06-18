@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#FF81A7">
+    <title>PicTalk</title>
+
+    <!-- 머티리얼라이즈 경로 -->
+    <link rel="stylesheet" href="public/materialize/css/materialize.min.css">
+    <script src="public/materialize/js/materialize.min.js"></script>
+
+
+    <!-- 로컬 경로 -->
+    <link rel="shortcut icon" href="public/images/logo/pictalk-logo-512.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/stylesheets/main.css">
+    <script src="public/scripts/main.js"></script>
+
+</head>
+<body>
+    <header id="app-bar" class="flex-vertical">
+        <button id="menu-button">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><img id="menu-icon" src="public/images/menu.svg"></a>
+        </button>
+        <!-- <span id="app-name">PicTalk</span> -->
+        <!-- 검색 모음 -->
+        <form id="search-field">
+            <!-- 돋보기 아이콘 -->
+            <!-- <button id="magnify" class="search-field-item flex" type="submit"></button> -->
+            <div id="search-bar-cover" class="input-field">
+                <!-- <label for="search-bar">검색</label> -->
+                <input id="search-bar" type="search" placeholder="검색" name="search">
+            </div>
+            <!-- 마이크 아이콘 -->
+            <button id="microphone" class="search-field-item flex"></button>
+        </form>
+    </header>
+    
+
+
+
+
+    
+    <div id="bottom-navigation">
+        <div id="bottom-nav-buttons">    <!-- 아래 내비 버튼 모음 -->
+            <button id="history" class="bottom-nav-buttons-item flex waves-effect">    <!-- 최근 선택 -->
+                <div><img id="history-icon" class="bottom-nav-icon" src="public/images/history.svg">최근 선택</div>
+            </button>
+            <button id="favorite" class="bottom-nav-buttons-item flex waves-effect">    <!-- 자주 선택 -->
+                <div><img id="favorite-icon" class="bottom-nav-icon" src="public/images/favorite.svg">자주 선택</div>
+            </button>
+            <button id="gungsileong" class="bottom-nav-buttons-item flex waves-effect bottom-nav-buttons-item-selected">    <!-- 모두 보기 -->
+                <div><img id="gungsileong-icon" class="bottom-nav-icon" src="public/images/gungsileong-on.svg">모두 보기</div>
+            </button>
+        </div>
+    </div>
+
+
+    <button id="full-screen-button" class="flex waves-effect waves-light">    <!-- 확대 아이콘 -->
+        <div id="full-screen-icon">
+
+        </div>
+    </button>
+
+
+
+
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+            <div class="background">
+            </div>
+        </div></li>
+
+        <!-- <li><div class="divider"></div></li> -->
+
+        <li><a class="subheader">카테고리</a></li>
+        <li><a id="traffic-button" class="waves-effect sidenav-close" href="#!"><span id="traffic-icon" class="sidenav-icon"></span>교통</a></li>
+
+        <li><a id="communication-button" class="waves-effect sidenav-close" href="#!"><span id="communication-icon" class="sidenav-icon"></span>통신</a></li>
+
+        <li><a id="number-button" class="waves-effect sidenav-close" href="#!"><span id="number-icon" class="sidenav-icon"></span>숫자</a></li>
+
+        <li><a id="emotion-button" class="waves-effect sidenav-close" href="#!"><span id="emotion-icon" class="sidenav-icon"></span>감정</a></li>
+
+        <li><a id="places-button" class="waves-effect sidenav-close" href="#!"><span id="places-icon" class="sidenav-icon"></span>장소</a></li>
+
+        <li><a id="tool-button" class="waves-effect sidenav-close" href="#!"><span id="tool-icon" class="sidenav-icon"></span>도구</a></li>
+
+        <li>
+            <ul class="sidenav-footer">
+                <li><div class="divider"></div></li>
+                <!-- Modal Trigger -->
+                <li><a class="modal-trigger item" href="#modal1">정보</a></li>
+
+                
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+        <h4>오픈소스</h4>
+        <p>
+            Materialize: MIT
+<!-- 
+The MIT License (MIT)
+
+Copyright (c) 2014-2018 Materialize
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ -->
+        </p>
+        <p>
+            Cordova: Apache 2.0
+<!-- 
+Apache License
+
+Version 2.0, January 2004
+
+http://www.apache.org/licenses/
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+1. Definitions.
+
+"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
+
+"Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+"Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
+
+"You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+
+"Source" form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.
+
+"Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.
+
+"Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
+
+"Derivative Works" shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.
+
+"Contribution" shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, "submitted" means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as "Not a Contribution."
+
+"Contributor" shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.
+
+2. Grant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.
+
+3. Grant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.
+
+4. Redistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:
+
+You must give any other recipients of the Work or Derivative Works a copy of this License; and
+You must cause any modified files to carry prominent notices stating that You changed the files; and
+You must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and
+If the Work includes a "NOTICE" text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License. 
+
+You may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.
+5. Submission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.
+
+6. Trademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.
+
+7. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.
+
+8. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.
+
+9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
+
+END OF TERMS AND CONDITIONS
+ -->
+        </p>
+        <p>
+            Naver Nanum Fonts
+<!-- 
+The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects,
+
+to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework  in which fonts may be shared and improved in partnership with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold 
+
+by themselves. The fonts, including any derivative works, can be bundled, embedded, redistributed and/or sold with any software provided that any reserved names are not used by derivative works. 
+
+The fonts and derivatives, however, cannot be released under any other type of license.
+
+The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.
+ -->
+        </p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+
+    <div id="one-img" class="flex display-none">
+        <div id="one-img-icon-box">
+            <div class="icon-box-selected">1</div>
+        </div>
+    </div>
+
+    <div id="two-img" class="flex flex-stack-up display-none">
+        <div id="two-img-icon-box1" class="two-img-icon-box">
+                <div class="icon-box-selected">1</div>
+        </div>
+        <div id="two-img-icon-box2" class="two-img-icon-box">
+                <div class="icon-box-selected">2</div>
+            </div>
+    </div>
+
+    <div id="three-img" class="flex flex-stack-up display-none">
+        <div id="three-img-icon-box1" class="three-img-icon-box">
+            <div class="icon-box-selected  three-icon-box-selected">1</div>
+        </div>
+        <div id="three-img-icon-box2" class="three-img-icon-box">
+            <div class="icon-box-selected three-icon-box-selected">2</div>
+        </div>
+        <div id="three-img-icon-box3" class="three-img-icon-box">
+            <div class="icon-box-selected three-icon-box-selected">3</div>
+        </div>
+    </div>
+
+    <div id="four-img" class="flex flex-stack-up display-none">
+        <div id="four-img-icon-box-cover" class="text-center">
+            <div id="four-img-icon-box1" class="four-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">1</div>
+            </div>
+            <div id="four-img-icon-box2" class="four-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">2</div>
+            </div>
+            <div id="four-img-icon-box3" class="four-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">3</div>
+            </div>
+            <div id="four-img-icon-box4" class="four-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">4</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="five-img" class="flex flex-stack-up display-none">
+        <div id="five-img-icon-box-cover" class="text-center">
+            <div id="five-img-icon-box1" class="five-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">1</div>
+            </div>
+            <div id="five-img-icon-box2" class="five-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">2</div>
+            </div>
+            <div id="five-img-icon-box3" class="five-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">3</div>
+            </div>
+            <div id="five-img-icon-box4" class="five-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">4</div>
+            </div>
+            <div id="five-img-icon-box5" class="five-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">5</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="six-img" class="flex flex-stack-up display-none">
+        <div id="six-img-icon-box-cover" class="text-center">
+            <div id="six-img-icon-box1" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">1</div>
+            </div>
+            <div id="six-img-icon-box2" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">2</div>
+            </div>
+            <div id="six-img-icon-box3" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">3</div>
+            </div>
+            <div id="six-img-icon-box4" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">4</div>
+            </div>
+            <div id="six-img-icon-box5" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">5</div>
+            </div>
+            <div id="six-img-icon-box6" class="six-img-icon-box">
+                <div class="icon-box-selected  three-icon-box-selected">6</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+    <div id="pictograms">
+
+        <!-- <div id="aaaaaaa" class="waves-effect waves-light pictogram">
+            <div></div>
+        </div> -->
+
+        <div id="question" class="waves-effect waves-light pictogram 상태 물음표 ?">
+            <div></div>
+        </div>
+        <div id="airport" class="waves-effect waves-light pictogram 장소 교통 공항 비행기">
+            <div></div>
+        </div>
+
+        <!-- 교통 -->
+        <div id="bus" class="waves-effect waves-light pictogram 교통 버스">
+            <div></div>
+        </div>
+        <div id="taxi" class="waves-effect waves-light pictogram 교통 택시">
+            <div></div>
+        </div>
+        <div id="subway" class="waves-effect waves-light pictogram 교통 지하철 전철 전동차">
+            <div></div>
+        </div>
+        <div id="ship" class="waves-effect waves-light pictogram 교통 배 선 바다">
+            <div></div>
+        </div>
+        <div id="truck" class="waves-effect waves-light pictogram 교통 트럭 자동차">
+            <div></div>
+        </div>
+        <div id="ambulance" class="waves-effect waves-light pictogram 교통 앰뷸런스 구급차 119">
+            <div></div>
+        </div>
+        <div id="plane" class="waves-effect waves-light pictogram 교통 비행기">
+            <div></div>
+        </div>
+        <div id="bicycle" class="waves-effect waves-light pictogram 교통 자전거 바이크">
+            <div></div>
+        </div>
+        <div id="motorcycle" class="waves-effect waves-light pictogram 교통 오토바이 모터사이클">
+            <div></div>
+        </div>
+        <div id="car" class="waves-effect waves-light pictogram 교통 자동차">
+            <div></div>
+        </div>
+        <div id="van" class="waves-effect waves-light pictogram 교통 밴 자동차">
+            <div></div>
+        </div>
+        <div id="sign" class="waves-effect waves-light pictogram 교통 표지판 정류소 정류장">
+            <div></div>
+        </div>
+
+
+
+
+
+
+
+        <!-- 장소 -->
+        <div id="map-marked" class="waves-effect waves-light pictogram 장소 지도 맵 마커 마크 위치">
+            <div></div>
+        </div>
+        <div id="marker" class="waves-effect waves-light pictogram 장소 지도 마크 표시 도착 마커 위치">
+            <div></div>
+        </div>
+        <div id="route" class="waves-effect waves-light pictogram 장소 지도 마크 표시 도착 마커 위치 길 경로 도착지">
+            <div></div>
+        </div>
+
+
+        
+        <div id="subway-stop" class="waves-effect waves-light pictogram 장소 교통 지하철정류소 지하철정류장 지하철정거장 전철역">
+            <div></div>
+        </div>
+        <div id="bus-stop" class="waves-effect waves-light pictogram 장소 교통 버스정류소 버스정류장 버스정거장 버스역">
+            <div></div>
+        </div>
+        <div id="taxi-stop" class="waves-effect waves-light pictogram 장소 교통 택시정류소 택시정류장 택시정거장 택시역">
+            <div></div>
+        </div>
+        
+
+        <div id="church" class="waves-effect waves-light pictogram 장소 건물 종교 교회 성당">
+            <div></div>
+        </div>
+        <div id="mosque" class="waves-effect waves-light pictogram 장소 건물 종교 이슬람 사원">
+            <div></div>
+        </div>
+        <div id="vihara" class="waves-effect waves-light pictogram 장소 건물 종교 수도원 절 사원">
+            <div></div>
+        </div>
+
+        <div id="hospital" class="waves-effect waves-light pictogram 장소 건물 병원 119 응급실 보건 의료">
+            <div></div>
+        </div>
+        <div id="building" class="waves-effect waves-light pictogram 장소 건물 아파트 빌딩 백화점">
+            <div></div>
+        </div>
+        <div id="toilet" class="waves-effect waves-light pictogram 장소 건물 화장실 남자화장실 여자화장실">
+            <div></div>
+        </div>
+        <div id="shower" class="waves-effect waves-light pictogram 장소 건물 화장실 샤워실 샤워장">
+            <div></div>
+        </div>
+        <div id="hotel" class="waves-effect waves-light pictogram 장소 건물 호텔 숙소 침대">
+            <div></div>
+        </div>
+        <div id="store" class="waves-effect waves-light pictogram 장소 건물 매점 상점 구멍가게 편의점 마트">
+            <div></div>
+        </div>
+
+
+        <!-- 감정 -->
+        <div id="smile" class="waves-effect waves-light pictogram 상태 감정 기쁨 기쁘다 행복 행복함 행복하다 웃음 웃다 미소 스마일 좋다 좋음">
+            <div></div>
+        </div>
+        <div id="frown" class="waves-effect waves-light pictogram 상태 감정 슬픔 슬프다 울상 부정적 찡그림 찡그리다 난색 싫다 싫음">
+            <div></div>
+        </div>
+        <div id="sad-tear" class="waves-effect waves-light pictogram 상태 감정 슬픔 슬프다 울상 울음 부정적 찡그림 찡그리다 눈물">
+            <div></div>
+        </div>
+        <div id="surprise" class="waves-effect waves-light pictogram 상태 감정 놀람 깜짝 놀라다 헉">
+            <div></div>
+        </div>
+        <div id="male" class="waves-effect waves-light pictogram 상태 감정 사람 인간 남자">
+            <div></div>
+        </div>
+        <div id="female" class="waves-effect waves-light pictogram 상태 감정 사람 인간 여자">
+            <div></div>
+        </div>
+        <div id="ban" class="waves-effect waves-light pictogram 상태 감정 밴 아니오 부정 취소 금지">
+            <div></div>
+        </div>
+
+
+        <!-- 숫자 -->
+        <div id="n1" class="waves-effect waves-light pictogram 숫자 1 하나 일 십 백 천 만">
+            <div></div>
+        </div>
+        <div id="n2" class="waves-effect waves-light pictogram 숫자 2 둘 이">
+            <div></div>
+        </div>
+        <div id="n3" class="waves-effect waves-light pictogram 숫자 3 셋 삼">
+            <div></div>
+        </div>
+        <div id="n4" class="waves-effect waves-light pictogram 숫자 4 넷 사">
+            <div></div>
+        </div>
+        <div id="n5" class="waves-effect waves-light pictogram 숫자 5 다섯 오">
+            <div></div>
+        </div>
+        <div id="n6" class="waves-effect waves-light pictogram 숫자 6 여섯 육">
+            <div></div>
+        </div>
+        <div id="n7" class="waves-effect waves-light pictogram 숫자 7 일곱 칠">
+            <div></div>
+        </div>
+        <div id="n8" class="waves-effect waves-light pictogram 숫자 8 여덟 팔">
+            <div></div>
+        </div>
+        <div id="n9" class="waves-effect waves-light pictogram 숫자 9 아홉 구">
+            <div></div>
+        </div>
+        <div id="n0" class="waves-effect waves-light pictogram 숫자 0 영 공 십">
+            <div></div>
+        </div>
+        <div id="n00" class="waves-effect waves-light pictogram 숫자 00 영 공 백">
+            <div></div>
+        </div>
+        <div id="n000" class="waves-effect waves-light pictogram 숫자 000 영 공 천">
+            <div></div>
+        </div>
+        <div id="n0000" class="waves-effect waves-light pictogram 숫자 0000 영 공 만">
+            <div></div>
+        </div>
+
+        <div id="clock" class="waves-effect waves-light pictogram 숫자 도구 시간 시계">
+            <div></div>
+        </div>
+        <div id="cc-apple-pay" class="waves-effect waves-light pictogram 숫자 계산 지불 결제 거래 애플페이">
+            <div></div>
+        </div>
+        <div id="cc-mastercard" class="waves-effect waves-light pictogram 숫자 계산 지불 결제 거래 마스터카드">
+            <div></div>
+        </div>
+        <div id="cc-paypal" class="waves-effect waves-light pictogram 숫자 계산 지불 결제 거래 페이팔">
+            <div></div>
+        </div>
+        <div id="money-bill" class="waves-effect waves-light pictogram 숫자 돈 지폐 화폐">
+            <div></div>
+        </div>
+
+        <!-- 통신 -->
+        <div id="wifi" class="waves-effect waves-light pictogram 통신 와이파이 인터넷 wifi">
+            <div></div>
+        </div>
+        <div id="phone" class="waves-effect waves-light pictogram 통신 전화 통화 폰">
+            <div></div>
+        </div>
+
+
+
+        <!-- 도구 -->
+        <div id="unlock" class="waves-effect waves-light pictogram 통신 도구 와이파이 인터넷 wifi 비밀번호 자물쇠 잠금 비번">
+            <div></div>
+        </div>
+        <div id="medkit" class="waves-effect waves-light pictogram 도구 의료가방 구급상자 병원 치료 약품 응급키트">
+            <div></div>
+        </div>
+        <div id="passport" class="waves-effect waves-light pictogram 도구 여권 패스포트 책 신분증">
+            <div></div>
+        </div>
+        <div id="utensils" class="waves-effect waves-light pictogram 도구 장소 음식 식당 음식점 레스토랑 식기 포크 나이프">
+            <div></div>
+        </div>
+        <div id="umbrella" class="waves-effect waves-light pictogram 도구 비 우산 우비">
+            <div></div>
+        </div>
+        <div id="credit-card" class="waves-effect waves-light pictogram 도구 숫자 계산 지불 결제 거래 신용카드">
+            <div></div>
+        </div>
+        <div id="pen" class="waves-effect waves-light pictogram 도구 펜 볼펜 연필 필기도구">
+            <div></div>
+        </div>
+        <div id="suitcase" class="waves-effect waves-light pictogram 도구 가방 캐리어 케이스 짐">
+            <div></div>
+        </div>
+        <div id="dolly" class="waves-effect waves-light pictogram 도구 가방 캐리어 케이스 짐 카트 수레">
+            <div></div>
+        </div>
+        <div id="wheelchair" class="waves-effect waves-light pictogram 도구 교통 휠체어 장애인">
+            <div></div>
+        </div>
+        <div id="smoking" class="waves-effect waves-light pictogram 도구 담배 스모킹 흡연 꽁초 시가">
+            <div></div>
+        </div>
+        <!-- <button id="TEST">TEST</button> -->
+    </div>
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

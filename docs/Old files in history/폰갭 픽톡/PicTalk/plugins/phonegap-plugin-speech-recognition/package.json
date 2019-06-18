@@ -1,0 +1,55 @@
+{
+  "_from": "git+https://github.com/macdonst/SpeechRecognitionPlugin.git",
+  "_id": "phonegap-plugin-speech-recognition@0.3.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/phonegap-plugin-speech-recognition",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/macdonst/SpeechRecognitionPlugin",
+    "rawSpec": "https://github.com/macdonst/SpeechRecognitionPlugin",
+    "saveSpec": "git+https://github.com/macdonst/SpeechRecognitionPlugin.git",
+    "fetchSpec": "https://github.com/macdonst/SpeechRecognitionPlugin.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/macdonst/SpeechRecognitionPlugin.git#8fbc04dcd6abf37ce1c2e186a9811aaa9fa7295c",
+  "_spec": "https://github.com/macdonst/SpeechRecognitionPlugin",
+  "_where": "C:\\Users\\gjdpr\\Desktop\\PicTalk",
+  "author": {
+    "name": "Simon MacDonald"
+  },
+  "bugs": {
+    "url": "https://github.com/macdonst/SpeechRecognitionPlugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "phonegap-plugin-speech-recognition",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Speech Recognition Plugin",
+  "homepage": "https://github.com/macdonst/SpeechRecognitionPlugin#readme",
+  "keywords": [
+    "cordova",
+    "speech",
+    "recognition",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "phonegap-plugin-speech-recognition",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macdonst/SpeechRecognitionPlugin.git"
+  },
+  "version": "0.3.0"
+}

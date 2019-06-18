@@ -1,0 +1,858 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+:root {
+    --app-bar-height: 50px;
+    --bot-nav-height: 60px;
+    --point-color: rgb(255, 129, 167);
+    --sup-color: rgb(255, 40, 105);
+    --sub-color: rgb(255, 200, 216);
+    --full-screen-icon-color: rgb(255, 232, 239);
+}
+
+html, body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FAFAFA;
+}
+
+
+/* 화면 상단의 바 */
+#app-bar {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: var(--app-bar-height);
+    /* background-color: #70B4F3; */
+    background-color: var(--point-color);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.26);
+}
+
+/* 메뉴 버튼 */
+#menu-button {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 메뉴 아이콘 */
+#menu-icon {
+}
+
+
+
+
+
+
+.sidenav {
+    width: 200px;
+    will-change: transform;
+    vertical-align: middle;
+}
+.subheader {
+    margin-bottom: 10px;
+}
+.user-view {
+    min-height: 100px;
+}
+.background {
+    height: 100%;
+    background-image: url("../images/logo/pictalk-bg.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sidenav li>a {
+    padding: 0 20px;
+}
+
+.sidenav-footer {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    left: 0;
+    color: rgba(0, 0, 0, 0.26);
+}
+.sidenav-footer .item {
+    height: 32px;
+    padding: 0 16px;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.26);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
+.sidenav-icon {
+    padding-right: 20px;
+    margin-right: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#traffic-icon {
+    background-image: url("../images/pictograms/bus.svg");
+}
+#communication-icon {
+    background-image: url("../images/pictograms/phone.svg");
+}
+#number-icon {
+    background-image: url("../images/pictograms/n3.svg");
+}
+#emotion-icon {
+    background-image: url("../images/pictograms/smile.svg");
+}
+#places-icon {
+    background-image: url("../images/pictograms/toilet.svg");
+}
+#tool-icon {
+    background-image: url("../images/pictograms/suitcase.svg");
+}
+
+
+
+
+
+#pictograms {
+    margin: calc(var(--app-bar-height) + 16px) 3px calc(var(--bot-nav-height) + 12px + 56px);
+    text-align: center;
+    font-size: 0;
+}
+.pictogram {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 5%;
+    box-sizing: border-box;
+    /* border: 0 solid #82FFA5; */
+    border-radius: 10%;
+    vertical-align: top;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #C1E1FF; */
+    background-color: #eeeeee;
+    /* box-shadow: 0 0 0 #389FFF; */
+    box-shadow: 0 0 0 var(--sub-color);
+    transition: 0.2s;
+    fill: #333333;
+}
+
+
+
+
+
+
+.selected {
+    box-sizing: border-box;
+    background-color: var(--sub-color);
+    border-radius: 0;
+    /* box-shadow: 0 0 10px #389FFF; */
+    box-shadow: 0 0 10px var(--sup-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 화면 하단의 검색과 버튼을 포함한 흰색 배경 */
+#bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    height: var(--bot-nav-height);
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 아래 내비 버튼들 */
+#bottom-nav-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: calc(var(--bot-nav-height));
+}
+
+/* 아래 내비 버튼들의 아이탬 */
+.bottom-nav-buttons-item {
+    border: 0;
+    /* border-radius: calc(var(--bot-nav-height) / 10); */
+    padding: 0;
+    text-align: center;
+    color: #757575;
+    background-color: rgba(0, 0, 0, 0);
+    border-top: 4px solid rgba(255, 255, 255, 0);
+}
+
+
+/* 최근, 자주, 궁시렁 선택 아이콘 - open */
+.bottom-nav-icon {
+    display: block;
+    width: 28px;
+    margin: auto;
+}
+/* 최근, 자주, 궁시렁 선택 아이콘 - end */
+.bottom-nav-buttons-item-selected {
+    color: var(--point-color);
+    border-top: 4px solid var(--point-color);
+}
+
+
+/* 검색 필드 */
+#search-field {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    width: 150px;
+    height: 30px;
+    margin: auto 17px auto auto;
+    /* border-bottom: 1px solid #9e9e9e; */
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.616);
+    /* box-shadow: 0 1px 5px #ffffff; */
+    padding-left: 10px;
+    /* background-color: #E0E0E0; */
+    transition: 0.2s;
+}
+#search-field:focus-within {
+    width: 100%;
+}
+
+/* 검색 필드 아이템 */
+.search-field-item {
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    cursor: pointer;
+}
+#search-bar::placeholder {
+    color: #9e9e9e;
+    font-size: 15px;
+}
+.input-field {
+    margin: 0;
+}
+.input_text {
+    margin: 0;
+}
+.input-field>label {
+    top: -6px;
+}
+
+
+
+/* 검색 필드 돋보기 아이콘과 마이크 아이콘 */
+#magnify {
+    background-image: url("../images/magnify.svg");
+}
+#microphone {
+    background-image: url("../images/microphone.svg");
+    background-size: 17px 24px;
+}
+
+
+
+/* 검색 바 커버 */
+#search-bar-cover {
+}
+
+/* 검색 바 */
+#search-bar {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+
+
+/* 전체화면 버튼 */
+#full-screen-button {
+    position: fixed;
+    right: 0;
+    z-index: 50;
+    bottom: calc(var(--bot-nav-height) + 12px);
+    left: 0;
+    width: 56px;
+    height: 56px;
+    margin: auto;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    /* background-color: #70B4F3; */
+    background-color: var(--point-color);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+}
+
+/* 전체화면 아이콘 */
+#full-screen-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url("../images/full-screen-icon.svg")
+}
+
+
+/* flex 정렬 클래스 - open */
+.flex-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.flex-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-stack-up {
+    flex-flow: column;
+}
+/* flex 정렬 클래스 - end */
+
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* 몇번째인지 나타내는 class */
+.sequence {
+    width: 20px;
+    height: 20px;
+    margin: 3px 3px 0 auto;
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 19px;
+    background-color: rgb(178, 224, 255);
+    box-shadow: 0 1px 1px rgba(80, 80, 80, 0.733);
+    transition: 0.2s
+}
+
+.display-none {
+    display: none;
+}
+
+
+/* -------- */
+    button:focus {
+        background-color: rgba(0, 0, 0, 0);
+    }
+/* -------- */
+
+
+
+
+
+#one-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#one-img-icon-box {
+    position: relative;
+    width: 70%;
+    padding-top: 35%;
+    padding-bottom: 35%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+
+#two-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.two-img-icon-box {
+    position: relative;
+    width: 60%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 8% 0;
+}
+
+
+
+#three-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.three-img-icon-box {
+    position: relative;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 5% 0;
+}
+
+
+#four-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#four-img-icon-box-cover {
+    width: 100%;
+}
+.four-img-icon-box {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+#five-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#five-img-icon-box-cover {
+    width: 100%;
+}
+.five-img-icon-box {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+
+#six-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#six-img-icon-box-cover {
+    width: 100%;
+}
+.six-img-icon-box {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    border-radius: 10%;
+    /* background-color: #C1E1FF; */
+    background-color: var(--full-screen-icon-color);
+    /* box-shadow: 0 0 20px #389FFF; */
+    /* box-shadow: 0 0 20px var(--sub-color); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 4% 4%;
+}
+
+
+.icon-box-selected {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+    background-color: rgb(178, 224, 255);
+    text-align: center;
+    margin: 10px;
+    font-size: 28px;
+    line-height: 40px;
+    box-shadow: 0 1px 1px rgba(80, 80, 80, 0.733);
+}
+.three-icon-box-selected {
+    width: 30px;
+    height: 30px;
+    margin: 6px;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+
+
+/* 픽토그램들 */
+/* 물음표 */
+#question {
+    background-image: url("../images/pictograms/question.svg");
+}
+/* 공항 */
+#airport {
+    background-image: url("../images/pictograms/airport.svg");
+}
+/* 버스 */
+#bus {
+    background-image: url("../images/pictograms/bus.svg");
+}
+/* 택시 */
+#taxi {
+    background-image: url("../images/pictograms/taxi.svg");
+}
+/* 지하철 */
+#subway {
+    background-image: url("../images/pictograms/subway.svg");
+}
+/* 배 */
+#ship {
+    background-image: url("../images/pictograms/ship.svg");
+}
+/* 트럭 */
+#truck {
+    background-image: url("../images/pictograms/truck.svg");
+}
+/* 구급차 */
+#ambulance {
+    background-image: url("../images/pictograms/ambulance.svg");
+}
+/* 비행기 */
+#plane {
+    background-image: url("../images/pictograms/plane.svg");
+}
+/* 자전거 */
+#bicycle {
+    background-image: url("../images/pictograms/bicycle.svg");
+}
+/* 오토바이 */
+#motorcycle {
+    background-image: url("../images/pictograms/motorcycle.svg");
+}
+/* 자동차 */
+#car {
+    background-image: url("../images/pictograms/car.svg");
+}
+/* 밴 */
+#van {
+    background-image: url("../images/pictograms/van.svg");
+}
+/* 표지판 */
+#sign {
+    background-image: url("../images/pictograms/sign.svg");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 맵-마크 */
+#map-marked {
+    background-image: url("../images/pictograms/map-marked.svg");
+}
+/* 마커 */
+#marker {
+    background-image: url("../images/pictograms/marker.svg");
+}
+/* 경로 */
+#route {
+    background-image: url("../images/pictograms/route.svg");
+}
+
+
+/* 전철역 */
+#subway-stop {
+    background-image: url("../images/pictograms/subway-stop.svg");
+}
+/* 버스정류소 */
+#bus-stop {
+    background-image: url("../images/pictograms/bus-stop.svg");
+}
+/* 택시정류장 */
+#taxi-stop {
+    background-image: url("../images/pictograms/taxi-stop.svg");
+}
+
+
+/* 호텔 */
+#hotel {
+    background-image: url("../images/pictograms/hotel.svg");
+}
+/* 교회 */
+#church {
+    background-image: url("../images/pictograms/church.svg");
+}
+/* 사원 */
+#mosque {
+    background-image: url("../images/pictograms/mosque.svg");
+}
+/* 수도원 */
+#vihara {
+    background-image: url("../images/pictograms/vihara.svg");
+}
+
+/* 병원 */
+#hospital {
+    background-image: url("../images/pictograms/hospital.svg");
+}
+/* 화장실 */
+#toilet {
+    background-image: url("../images/pictograms/toilet.svg");
+}
+/* 빌딩 */
+#building {
+    background-image: url("../images/pictograms/building.svg");
+}
+/* 샤워 */
+#shower {
+    background-image: url("../images/pictograms/shower.svg");
+}
+/* 상점 */
+#store {
+    background-image: url("../images/pictograms/store.svg");
+}
+
+
+
+
+/* 감정 */
+/* 찡그림 */
+#frown {
+    background-image: url("../images/pictograms/frown.svg");
+}
+/* 미소 */
+#smile {
+    background-image: url("../images/pictograms/smile.svg");
+}
+/* 눈물 */
+#sad-tear {
+    background-image: url("../images/pictograms/sad-tear.svg");
+}
+/* 놀람 */
+#surprise {
+    background-image: url("../images/pictograms/surprise.svg");
+}
+/* 남자 */
+#male {
+    background-image: url("../images/pictograms/male.svg");
+}
+/* 여자 */
+#female {
+    background-image: url("../images/pictograms/female.svg");
+}
+/* 금지 */
+#ban {
+    background-image: url("../images/pictograms/ban.svg");
+}
+
+
+
+/* 숫자 */
+/* 시간 */
+#clock {
+    background-image: url("../images/pictograms/clock.svg");
+}
+/* 애플페이 */
+#cc-apple-pay {
+    background-image: url("../images/pictograms/cc-apple-pay.svg");
+}
+/* 마스터카드 */
+#cc-mastercard {
+    background-image: url("../images/pictograms/cc-mastercard.svg");
+}
+/* 페이팔 */
+#cc-paypal {
+    background-image: url("../images/pictograms/cc-paypal.svg");
+}
+/* 지폐 */
+#money-bill {
+    background-image: url("../images/pictograms/money-bill.svg");
+}
+
+/* 숫자 1~0000 */
+#n1 {
+    background-image: url("../images/pictograms/n1.svg");
+}
+#n2 {
+    background-image: url("../images/pictograms/n2.svg");
+}
+#n3 {
+    background-image: url("../images/pictograms/n3.svg");
+}
+#n4 {
+    background-image: url("../images/pictograms/n4.svg");
+}
+#n5 {
+    background-image: url("../images/pictograms/n5.svg");
+}
+#n6 {
+    background-image: url("../images/pictograms/n6.svg");
+}
+#n7 {
+    background-image: url("../images/pictograms/n7.svg");
+}
+#n8 {
+    background-image: url("../images/pictograms/n8.svg");
+}
+#n9 {
+    background-image: url("../images/pictograms/n9.svg");
+}
+#n0 {
+    background-image: url("../images/pictograms/n0.svg");
+}
+#n00 {
+    background-image: url("../images/pictograms/n00.svg");
+}
+#n000 {
+    background-image: url("../images/pictograms/n000.svg");
+}
+#n0000 {
+    background-image: url("../images/pictograms/n0000.svg");
+}
+
+/* 통신 */
+/* 와이파이 */
+#wifi {
+    background-image: url("../images/pictograms/wifi.svg");
+}
+#phone {
+    background-image: url("../images/pictograms/phone.svg");
+}
+
+
+
+/* 도구 */
+/* 자물쇠 */
+#unlock {
+    background-image: url("../images/pictograms/unlock.svg");
+}
+/* 의료가방 */
+#medkit {
+    background-image: url("../images/pictograms/medkit.svg");
+}
+/* 여권 */
+#passport {
+    background-image: url("../images/pictograms/passport.svg");
+}
+/* 식당 */
+#utensils {
+    background-image: url("../images/pictograms/utensils.svg");
+}
+/* 우산 */
+#umbrella {
+    background-image: url("../images/pictograms/umbrella.svg");
+}
+/* 신용카드 */
+#credit-card {
+    background-image: url("../images/pictograms/credit-card.svg");
+}
+/* 펜 */
+#pen {
+    background-image: url("../images/pictograms/pen.svg");
+}
+/* 가방 */
+#suitcase {
+    background-image: url("../images/pictograms/suitcase.svg");
+}
+/* 카트 */
+#dolly {
+    background-image: url("../images/pictograms/dolly.svg");
+}
+/* 휠체어 */
+#wheelchair {
+    background-image: url("../images/pictograms/wheelchair.svg");
+}
+/* 담배 */
+#smoking {
+    background-image: url("../images/pictograms/smoking.svg");
+}
+/* ------------ */
